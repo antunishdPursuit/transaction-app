@@ -7,9 +7,8 @@ const API = process.env.REACT_APP_API_URL;
 
 function TransactionsNewForm() {
   const navigate = useNavigate();
-  const [count, setCount] = useState(5)
   const [transaction, setTransaction] = useState({
-    id: count,
+    id: myuuid,
     item_name: "",
     amount: 0,
     date: "",
@@ -22,16 +21,12 @@ function TransactionsNewForm() {
     .post(`${API}/transactions`, newtransaction)
     .then(
     (res) => {
-      console.log(res)
     navigate(`/transactions`);
     })
     .catch((c) => console.error("catch", c));
   };
 
   const handleTextChange = (event) => {
-    console.log(event.target.value)
-    console.log(event.target.id)
-    setCount(count + 1)
     setTransaction({ ...transaction, [event.target.id]: event.target.value });
   };
 
@@ -110,18 +105,6 @@ function TransactionsNewForm() {
                 <label htmlFor="category">Category:</label>
             </div>
             <br></br>
-            <div className="form-floating">
-                <input
-                id="id" 
-                type="text" 
-                value={transaction.id}
-                onChange={handleTextChange}
-                className="form-control" 
-                placeholder="id:"
-                required
-                />
-                <label htmlFor="id">id:</label>
-            </div>
             <input type="submit" />
           </form>
         </div>

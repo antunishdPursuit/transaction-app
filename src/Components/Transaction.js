@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 function Transaction({transaction}) {
-
     return (
       <div >
         <ul className="list-group list-group-horizontal">

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams,Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function TransactionsDetails() {
@@ -39,7 +39,19 @@ function TransactionsDetails() {
             <li className="list-group-item"><span className="fw-bold">From: </span>{transaction.from}</li>
             <li className="list-group-item"><span className="fw-bold">Catergory: </span>{transaction.category}</li>
           </ul>
-        <button onSubmit={handleDelete}>Delete</button>
+          <div>
+          {" "}
+          <Link to={`/transactions`}>
+            <button>Back</button>
+          </Link>
+        </div>
+        <div>
+          {" "}
+          <Link to={`/transactions/${index}/edit`}>
+            <button>Edit</button>
+          </Link>
+        </div>
+        <button onClick={handleDelete}>Delete</button>
         </div>
       </div>
     );
